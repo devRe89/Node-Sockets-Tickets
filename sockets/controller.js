@@ -3,11 +3,9 @@ const ticketControl = new TickectControl();
 
 
 const socketController = (socket) => {
-
-    console.log('CLiente conectado', socket.id);
-
-    socket.on("disconnect", () => {
-        console.log('Cliente desconectado');
+    socket.on('siguiente-ticket', (payload, callback) => {
+        const siguente = ticketControl.siguiente();
+        callback(siguente);
     });
 }
 
